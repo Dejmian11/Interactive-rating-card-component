@@ -1,0 +1,5 @@
+.even-columns {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-500);
+}

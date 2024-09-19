@@ -1,0 +1,86 @@
+.rating-card {
+  max-width: 25.75rem;
+  background: radial-gradient(
+    circle farthest-side at center top,
+    hsl(var(--clr-primary-400-hsl)) 30%,
+    hsl(var(--clr-primary-300-hsl)) 100%
+  );
+  border-radius: 1rem;
+
+  &__feedback,
+  &__summary {
+    display: grid;
+  }
+
+  &__feedback {
+    gap: var(--spacing-400);
+    padding: var(--spacing-600) var(--spacing-600) var(--spacing-800);
+
+    @include respond(md) {
+      gap: var(--spacing-100);
+      padding: var(--spacing-800);
+    }
+  }
+
+  &__icon-box {
+    justify-self: start;
+    padding: 0.8125rem;
+    border-radius: 100vmax;
+    background: hsl(var(--clr-primary-500-hsl));
+
+    @include respond(md) {
+      padding: 1rem;
+      margin-bottom: 1.375rem;
+    }
+  }
+
+  &__icon {
+    width: 0.8125rem;
+    aspect-ratio: 1;
+
+    @include respond(md) {
+      width: 1rem;
+    }
+  }
+
+  &__summary {
+    justify-items: center;
+    text-align: center;
+    gap: var(--spacing-600);
+    padding: var(--spacing-900) var(--spacing-600) var(--spacing-lg);
+    display: none;
+
+    @include respond(md) {
+      gap: var(--spacing-800);
+      padding: var(--spacing-xl) var(--spacing-lg);
+    }
+  }
+
+  &__illustration {
+    max-height: 6rem;
+
+    @include respond(md) {
+      max-height: 6.75rem;
+    }
+  }
+
+  &__message {
+    padding: 0.3125rem 0.75rem;
+    border-radius: 100vmax;
+    background-color: hsl(var(--clr-primary-500-hsl));
+    color: hsl(var(--clr-accent-400-hsl));
+
+    @include respond(md) {
+      padding: 0.25rem 1.25rem;
+    }
+  }
+
+  &__details {
+    display: grid;
+    gap: var(--spacing-200);
+
+    @include respond(md) {
+      gap: var(--spacing-100);
+    }
+  }
+}

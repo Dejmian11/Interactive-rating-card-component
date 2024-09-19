@@ -1,0 +1,139 @@
+@use 'media-queries' as *;
+
+// VARIABLES //////////////////////////////////////
+:root {
+  //Colors
+  --clr-primary-200-hsl: 216, 12%, 8%;
+  --clr-primary-300-hsl: 216, 24%, 12%;
+  --clr-primary-400-hsl: 215, 20%, 17%;
+  --clr-primary-500-hsl: 213, 19%, 18%;
+
+  --clr-accent-400-hsl: 25, 97%, 53%;
+
+  --clr-neutral-500-hsl: 217, 12%, 63%;
+  --clr-neutral-900-hsl: 0, 0%, 100%;
+
+  // Font family
+  --ff-primary: Overpass, sans-serif;
+
+  // Font weights
+  --fw-regular: 400;
+  --fw-bold: 700;
+
+  // Font sizes
+  --fs-200: 0.875rem;
+  --fs-300: 0.9375rem; //15
+  --fs-400: 1rem;
+  --fs-500: 1.5rem;
+  --fs-600: 1.75rem; // 28
+
+  --fs-body: var(--fs-200);
+  --fs-heading-primary: var(--fs-500);
+
+  @include respond(md) {
+    --fs-body: var(--fs-300);
+    --fs-heading-primary: var(--fs-600);
+  }
+
+  // Sizes
+  --spacing-unit: 1rem;
+  --spacing-s: calc(var(--spacing-unit) * 0.3125); // 5
+  --spacing-100: calc(var(--spacing-unit) * 0.5); // 8
+  --spacing-200: calc(var(--spacing-unit) * 0.625); // 10
+  --spacing-300: calc(var(--spacing-unit) * 0.75); // 12
+  --spacing-400: calc(var(--spacing-unit)); // 16
+  --spacing-500: calc(var(--spacing-unit) * 0.125); // 18
+  --spacing-600: calc(var(--spacing-unit) * 1.5); // 24
+  --spacing-700: calc(var(--spacing-unit) * 1.875); // 30
+  --spacing-800: calc(var(--spacing-unit) * 2); // 32
+  --spacing-900: calc(var(--spacing-unit) * 2.125); // 34
+  --spacing-lg: calc(var(--spacing-unit) * 2.3125); // 37
+  --spacing-xl: calc(var(--spacing-unit) * 2.8125); // 45
+}
+
+// BASE STYLING //////////////////////////////////////
+body {
+  background-color: hsl(var(--clr-primary-200-hsl));
+  display: grid;
+  place-content: center;
+  padding-inline: var(--spacing-600);
+}
+
+// TYPOGRAPHY //////////////////////////////////////
+body {
+  color: hsl(var(--clr-neutral-500-hsl));
+  font-family: var(--ff-primary);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-body);
+}
+
+.heading-primary,
+.highlighted-text {
+  color: hsl(var(--clr-neutral-900-hsl));
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-heading-primary);
+}
+
+// BUTTONS //////////////////////////////////////
+.btn-primary {
+  padding: 0.875rem;
+  border: 0;
+  border-radius: 100vmax;
+  background-color: hsl(var(--clr-accent-400-hsl));
+  font-weight: var(--fw-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.125rem;
+  line-height: 1;
+  transition: 0.25s;
+  cursor: pointer;
+
+  &:is(:hover, :focus-visible) {
+    background-color: hsl(var(--clr-neutral-900-hsl));
+  }
+}
+
+// FORM //////////////////////////////////////
+.form {
+  display: grid;
+  gap: var(--spacing-600);
+  padding-top: var(--spacing-100);
+
+  @include respond(md) {
+    gap: var(--spacing-800);
+    padding-top: var(--spacing-400);
+  }
+
+  &__radio-input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+
+    & + .form__radio-label {
+      display: grid;
+      place-content: center;
+      width: 2.625rem;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background-color: hsl(var(--clr-primary-500-hsl));
+      color: hsl(var(--clr-neutral-500-hsl));
+      font-weight: var(--fw-bold);
+      line-height: 1.5rem;
+      transition: 0.25s;
+      cursor: pointer;
+
+      @include respond(md) {
+        width: 3.1875rem;
+      }
+    }
+
+    &:is(:hover, :focus) + .form__radio-label {
+      background-color: hsl(var(--clr-neutral-900-hsl));
+      color: hsl(var(--clr-primary-500-hsl));
+    }
+
+    &:checked + .form__radio-label {
+      background-color: hsl(var(--clr-accent-400-hsl));
+      color: hsl(var(--clr-primary-500-hsl));
+    }
+  }
+}
